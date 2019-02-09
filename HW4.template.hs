@@ -63,9 +63,25 @@ cmd (Move x2 y2) (m, (x1, y1)) =
 --
 --   >>> prog (steps 2 0 0) start
 --   ((Down,(2,2)),[((0,0),(0,1)),((0,1),(1,1)),((1,1),(1,2)),((1,2),(2,2))])
-prog :: Prog -> State -> (State, [Line])
-prog = undefined
 
+-- [Pen Up, Move x y, Pen Down, Move (x+w) (y+h), Pen Up, Move x (y+h), Pen Down, Move (x+w) y]
+-- Cmd 1: ((up, (0, 0)), Nothing)
+-- Cmd 2: ((up, (10, 10)), Nothing)
+-- Cmd 3: ((down, (10, 10)), Nothing)
+-- Cmd 4: ((down, (15, 17)), Just ((10, 10), (15, 17)))
+-- Cmd 5: ((up, (15, 17)), Nothing)
+-- cmd 6: ((up, (10, 17)), Nothing)
+-- Cmd 7: ((down, (10, 17)), Nothing)
+-- Cmd 8: ((down, (15, 10)), Just ((10, 17), (15, 10)))
+
+prog :: Prog -> State -> (State, [Line])
+prog [] state = (state, [])
+prog (x:xs) (state) = case (cmd x state) of
+                      ((m, (x1, y1)), Just ((x2, y2), (x3, y3))) -> (appendList (((x2, y2), (x3, y3))) (prog xs (m, (x1, y1))))
+                      ((m, (x, y)), Nothing) -> prog xs (m, (x, y))
+
+appendList :: Line -> (State, [Line]) -> (State, [Line])
+appendList (line) (state, listLine) = (state, line : listLine)
 
 --
 -- * Extra credit
