@@ -64,7 +64,7 @@ content = unlines . map (poly drawStyle) . chunk
 -- | A canvas-adjusted point as a string.
 point :: Point -> String
 point (x,y) = show xp ++ "," ++ show yp
-    where xp = x*scale + margin
+  where xp = x*scale + margin
         yp = height - y*scale + margin
 
 -- | Chunk a bunch of lines into sequences of connected points.
