@@ -90,4 +90,7 @@ appendList (line) (state, listLine) = (state, line : listLine)
 -- | This should be a MiniMiniLogo program that draws an amazing picture.
 --   Add as many helper functions as you want.
 amazing :: Prog
-amazing = undefined
+amazing = [Pen Up, Move 5 5, Pen Down, Move 10 20, Move 5 35,Move 6 36, Move 10 36, Move 9 35, Move 5 35, Pen Up, Move 9 35, Pen Down, Move 14 20, Move 9 5, Move 5 5, Pen Up, Move 9 5, Pen Down, Move 10 5, Move 15 20, Move 10 36,
+        Pen Up, Move 12 5, Pen Down, Move 17 20, Move 12 35, Move 13 36, Move 17 36, Move 16 35, Move 12 35, Pen Up, Move 16 35, Pen Down, Move 27 5, Move 23 5, Move  20 15, Move 16 5, Move 15 5, Move 19 15, Move 20 15, Pen Up, Move 16 5, Pen Down, Move 12 5, Pen Up, Move 27 5, Pen Down, Move 28 5, Move 17 36,
+        Pen Up, Move 25 21, Pen Down, Move 35 21, Move 36 22, Move 35 25, Move 25 25, Move 24 24, Move 34 24, Move 35 25, Move 34 24, Move 35 21, Pen Up, Move 25 21, Pen Down, Move 24 24,
+        Pen Up, Move 27 15, Pen Down, Move 35 15, Move 36 16, Move 35 19, Move 27 19, Move 26 18, Move 27 15, Move 26 18, Move 34 18, Move 35 19, Move 34 18, Move 35 15]
